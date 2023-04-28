@@ -4,8 +4,40 @@
   box-sizing: border-box;
 }
 
-.add-user-btn {
+.user-header {
+  width: 400px;
+  margin: 100px auto;
+  background-color: rgb(119, 153, 131);
+  box-shadow: 1px 1px 3px #0000004f;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.add-user-btn:link,
+.add-user-btn:visited {
   background-color: lightsalmon;
   padding: 12px 24px;
-  display: block;
+  border-radius: 10px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  width: 130px;
+}
+
+.add-user-btn:hover {
+  background-color: red;
+  color: #eeeeee;
+}
+
+.user-form {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
 }

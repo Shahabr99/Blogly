@@ -1,0 +1,23 @@
+{% extends "base.html" %}{% block form %}
+<form class="user-form" action="/profile" method="POST">
+  <label for="first-name"
+    >First name: <input id="first-name' type="text" name="first_name"
+    placeholder="name..." required />
+  </label>
+  <label for="last-name"
+    >Last name:
+    <input
+      id="last-name"
+      type="text"
+      name="last_name"
+      placeholder="last name..."
+      required
+    />
+  </label>
+  <label for="image-url"
+    >Profile picture URL:
+    <input id="image-url" type="text" name="image_url" maxlength="100" />
+  </label>
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}

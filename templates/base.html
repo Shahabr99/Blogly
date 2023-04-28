@@ -4,10 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="app.css" />
+    <title>List of users</title>
+    <link rel="stylesheet" href="/static/app.css" />
   </head>
   <body>
-    <header>{% block users%}{% endblock %}</header>
+    <header class="user-profile">
+      <div>{% block profilepic %}{% endblock %}</div>
+      <div>{% block info %}{% endblock %}</div>
+    </header>
+    <div class="user-header">
+      {% block form %}{% endblock %} {% block users %}{% endblock %} {% block
+      button %}{% endblock %}
+    </div>
   </body>
 </html>
