@@ -19,27 +19,27 @@ with app.app_context():
 
 @app.route('/')
 def show_homepage():
-    users = User.query.all()
-    return render_template('home.html', users=users)
+    return redirect('/users')
 
-@app.route('/form')
+@app.route('/users')
 def show_users():
-    return render_template('form.html')
+        users = User.query.all()
+        return render_template('users.html', users=users)
 
-@app.route('/profile', methods=["POST"])
-def show_profile():
+@app.route('/user/new')
+def load_form():
+    return render_template('form.html') 
 
+
+@app.route('/user/new', methods=["POST"])
+def add_user():
     first_name = request.form['first_name']
-    last_name= request.form['last_name']
-    image_url= request.form['image_url']
-    user = User(first_name=first_name, last_name=last_name, image_url=image_url)
+    last_name = request.form['last_name']
+    image_url = request.form['image_url']
 
-    db.session.add(user)
+    new_user = User(first_name = first_name, last_name=last_name, image_url = image_url)
+
+    db.session.add(new_user)
     db.session.commit()
 
-    return render_template('profile.html', firstname=first_name, lastname=last_name, image_url=image_url)
-
-
-
-
-
+    return render_template('users.html', new_user=new_user)
