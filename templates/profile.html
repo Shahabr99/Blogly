@@ -1,4 +1,8 @@
 {% extends 'base.html' %}{% block profilepic %}
-<img src="{{image_url}}" alt="" /> {% endblock %} {% block info %} {{firstname}}
-{{lastname}} <button>Edit</button><button>Delete</button>
+<img class="profile-pic" src="{{image_url}}" alt="" /> {% endblock %} {% block
+info %} {{firstname}} {{lastname}}
+<div class="btn-box">
+  <a href="/edit" class="edit-btn">Edit</a
+  ><a href="/delete" class="del-btn">Delete</a>
+</div>
 {% endblock %}

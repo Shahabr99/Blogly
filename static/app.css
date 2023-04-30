@@ -41,3 +41,34 @@
   gap: 10px;
   padding: 20px;
 }
+
+.user-profile {
+  display: flex;
+  gap: 10px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-pic {
+  width: 110px;
+  height: 140px;
+}
+
+.del-btn {
+  background-color: rgb(175, 54, 54);
+  color: #fff;
+  padding: 5px 10px;
+}
+
+.edit-btn {
+  background-color: rgb(57, 169, 57);
+  color: #fff;
+  padding: 5px 10px;
+}
+
+.btn-box {
+  display: flex;
+}
