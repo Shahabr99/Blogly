@@ -51,3 +51,45 @@ def show_user(id):
     user = User.query.get_or_404(id)
     
     return render_template('profile.html', user=user)
+
+
+@app.route('/users/<int:id>/edit')
+def edit_user(id):
+
+    user_info = User.query.get_or_404(id)
+
+    return render_template('edit.html', user=user_info)
+
+
+@app.route('/users/<int:id>/edit', methods=['POST'])
+def change_user(id):
+    """Changing info of a user"""
+
+    target_user = User.query.get(id)
+    name = request.form['fname']
+    lastname = request.form['lname']
+    image = request.form['img_url']
+
+    target_user.first_name = name
+    target_user.last_name = lastname
+    target_user.image_url = image
+
+   
+    db.session.add(target_user)
+    db.session.commit()
+    
+    users = User.query.all()
+
+    return render_template('users.html', users = users)
+
+
+@app.route('/users/<int:id>/delete')
+def delete_user(id):
+    """Delete a user"""
+    user = User.query.get(id)
+
+    db.session.delete(user)
+    db.session.commit()
+
+    users = User.query.all()
+    return render_template('users.html', users=users)

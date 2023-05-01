@@ -54,8 +54,8 @@
 }
 
 .profile-pic {
-  width: 110px;
-  height: 140px;
+  width: 160px;
+  height: 250px;
 }
 
 .del-btn {
@@ -90,4 +90,20 @@
 
 li {
   list-style: none;
+}
+
+.edit-form {
+  width: 400px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.submit-btn {
+  width: 100px;
+}
+
+h1 {
+  margin-bottom: 30px;
 }
