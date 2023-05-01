@@ -42,4 +42,12 @@ def add_user():
     db.session.add(new_user)
     db.session.commit()
 
-    return render_template('users.html', new_user=new_user)
+    users = User.query.all()
+
+    return render_template('users.html', users=users)
+
+@app.route('/user/<int:id>')
+def show_user(id):
+    user = User.query.get_or_404(id)
+    
+    return render_template('profile.html', user=user)
