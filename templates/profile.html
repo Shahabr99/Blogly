@@ -17,16 +17,16 @@
           <a href="/users/{{user.id}}/edit" class="edit-btn">Edit</a>
           <a href="/users/{{user.id}}/delete" class="del-btn">Delete</a>
         </div>
-        <div class="post-list">
-          <h2>Posts</h2>
-          <ul>
-            {% for post in posts %}
-            <li><a href="">{{post.title}}</a></li>
-            {% endfor% }
-          </ul>
+      </div>
+      <div class="post-list">
+        <h2>Posts</h2>
+        <ul>
+          {% for post in posts %}
+          <li><a href="/posts/{{post.id}}">{{post.title}}</a></li>
+          {% endfor %}
+        </ul>
 
-          <a class="form-btn" href="/users/{{user.id}}/posts/new">Add Post</a>
-        </div>
+        <a class="form-btn" href="/users/{{user.id}}/posts/new">Add Post</a>
       </div>
     </header>
   </body>

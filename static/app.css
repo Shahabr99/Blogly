@@ -45,7 +45,7 @@
 
 .user-profile {
   display: flex;
-  gap: 50px;
+  gap: 40px;
 }
 
 .user-info {
@@ -127,6 +127,8 @@ h2 {
   background-color: rgb(72, 72, 217);
   color: #eee;
   text-decoration: none;
+  width: 100px;
+  font-size: 14px;
 }
 
 .post-form {
@@ -161,4 +163,49 @@ h2 {
 
 #post-btn:hover {
   cursor: pointer;
+}
+
+.post-box {
+  margin-bottom: 30px;
+}
+
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 400px;
+}
+
+.btns {
+  display: flex;
+  gap: 12px;
+}
+
+.post-btn:visited,
+.post-btn:link {
+  width: 100px;
+  padding: 8px 14px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.delete {
+  background-color: rgb(198, 65, 92);
+  color: #fff;
+}
+
+.edit {
+  background-color: skyblue;
+  color: #000;
+}
+
+.cancel {
+  border: 1px solid skyblue;
+  color: skyblue;
+  background-color: #eee;
+}
+
+.edited-post {
+  width: 500px;
+  height: 500px;
 }

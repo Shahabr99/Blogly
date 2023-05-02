@@ -1,8 +1,8 @@
 """Blogly application."""
 
 from flask import Flask, render_template, redirect, session, request
-from models import db, connect_db, User, Post
-
+from models import db, connect_db, User
+from models import Post
 
 app = Flask(__name__)
 
@@ -49,8 +49,8 @@ def add_user():
 @app.route('/user/<int:id>')
 def show_user(id):
     user = User.query.get_or_404(id)
-    posts = Post.query.all()
-    return render_template('profile.html', user=user, posts = posts)
+    posts = Post.query.filter(Post.user_id == id).all()
+    return render_template('profile.html', user=user, posts=posts)
 
 
 @app.route('/users/<int:id>/edit')
@@ -104,13 +104,49 @@ def post_form(id):
 @app.route('/users/<int:id>/posts/new', methods=["POST"])
 def show_posts(id):
     title = request.form['title']
-    text = request.form['textarea']
+    content = request.form['content']
 
-    post = Post(title = title, textarea=text)
+    post = Post(title = title, content=content, user_id=id)
 
     db.session.add(post)
     db.session.commit()
 
-    user_posts = Post.query.all()
 
     return redirect(f"/user/{id}")
+
+
+@app.route('/posts/<int:id>')
+def post_details(id):
+    post = Post.query.get(id)
+    return render_template('post_content.html', post=post)
+
+
+@app.route('/cancel/<int:id>')
+def cancelled(id):
+
+    return redirect(f'/user/{id}')
+
+
+@app.route('/delete/<int:id>')
+def delete_post(id):
+    post = Post.query.get(id)
+    id = post.user_id
+    
+    db.session.delete(target_post)
+    db.session.commit()
+
+    return redirect(f'/user/{id}')
+
+
+@app.route('/edit/<int:id>')
+def edit_post(id):
+    post=Post.query.get(id)
+    return render_template('edit_post.html', post=post)
+
+
+@app.route('posts/<int:id>/edit', methods=['POST'])
+def post_edition(id):
+    title = request.form['title']
+    content = request.form['content']
+
+    
