@@ -2,9 +2,9 @@ from unittest import TestCase
 from app import app
 from models import db, User
 
-
-db.drop_all()
-db.create_all()
+with app.app_context():
+    db.drop_all()
+    db.create_all()
 
 class UserTest(TestCase):
     def setUp(self):
@@ -25,10 +25,18 @@ class UserTest(TestCase):
     
     def test_add_user(self):
         with app.test_client() as client:
-            d = {'first_name': 'Donna', 'last-name': 'Sherlington', 'image_url':'https://cdn.pixabay.com/photo/2016/03/23/04/01/woman-1274056_960_720.jpg' }
+            d = {'id': 22, 'first_name': 'Donna', 'last-name': 'Sherlington' }
             resp = client.post('/user/new', data=d)
-            # html = resp.get_data(as_text=True)
+            html = resp.get_data(as_text=True)
             self.assertEqual(resp.status_code, 200)
-            # self.assertIn(f'<a href="/user/user.id">d.first_name d.last_name</a></li>', html)
+            self.assertIn(f"<a href='/user/{d.id}'>{d.first_name} {d.last_name}</a>", html)
 
-    def test_
+    
+    def test_change_user(self):
+
+        with app.test_client as client:
+            d = {'id': 3, 'first_name': 'Karim', 'last_name': 'Sobhuni'}
+            resp = client.post(f'/users/{d.id}/edit')
+            html = resp.get_data(as_text=True)
+            self.assertEqual(resp.status_code, 200)
+            self.assertIn(f"<a href='/user/{d.id}'>{d.first_name} {d.last_name}</a>", html)

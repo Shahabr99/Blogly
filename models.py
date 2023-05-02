@@ -3,10 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-def connect_db(app):
-  db.app = app
-  db.init_app(app)
-
 
 class User(db.Model):
 
@@ -23,3 +19,7 @@ class User(db.Model):
 
         p=self
         return f"<user {p.id} {p.first_name} {p.last_name} {p.image_url}"
+
+def connect_db(app):
+    db.app = app
+    db.init_app(app)
