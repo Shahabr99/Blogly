@@ -1,7 +1,7 @@
 """Blogly application."""
 
 from flask import Flask, render_template, redirect, session, request
-from models import db, connect_db, User
+from models import db, connect_db, User, Post
 
 
 app = Flask(__name__)
@@ -49,8 +49,8 @@ def add_user():
 @app.route('/user/<int:id>')
 def show_user(id):
     user = User.query.get_or_404(id)
-    
-    return render_template('profile.html', user=user)
+    posts = Post.query.all()
+    return render_template('profile.html', user=user, posts = posts)
 
 
 @app.route('/users/<int:id>/edit')
@@ -93,3 +93,24 @@ def delete_user(id):
 
     users = User.query.all()
     return render_template('users.html', users=users)
+
+
+@app.route('/users/<int:id>/posts/new')
+def post_form(id):
+    """Loads the form and user can post"""
+    return render_template('post.html', id=id)
+
+
+@app.route('/users/<int:id>/posts/new', methods=["POST"])
+def show_posts(id):
+    title = request.form['title']
+    text = request.form['textarea']
+
+    post = Post(title = title, textarea=text)
+
+    db.session.add(post)
+    db.session.commit()
+
+    user_posts = Post.query.all()
+
+    return redirect(f"/user/{id}")
