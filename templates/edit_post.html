@@ -10,14 +10,23 @@
   <body>
     <main class="edited-post">
       <h1>Edit Post</h1>
-      <form action="posts/{{post.id}}/edit" method="POST">
+      <form action="/posts/{{post.id}}/edit" method="POST">
         <label for="title"
           >Title:
-          <input id="title" name="title" type="text" maxlength="100" required />
+          <input
+            id="title"
+            name="title"
+            type="text"
+            maxlength="100"
+            value="{{post.title}}"
+            required
+          />
         </label>
         <label for="content"
           >Post Content:
-          <textarea name="content" id="content" cols="30" rows="10"></textarea>
+          <textarea name="content" id="content" cols="30" rows="10">
+{{post.content}}</textarea
+          >
         </label>
         <a href="">Cancel</a>
         <button type="Submit">Edit</button>

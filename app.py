@@ -127,16 +127,6 @@ def cancelled(id):
     return redirect(f'/user/{id}')
 
 
-@app.route('/delete/<int:id>')
-def delete_post(id):
-    post = Post.query.get(id)
-    id = post.user_id
-    
-    db.session.delete(target_post)
-    db.session.commit()
-
-    return redirect(f'/user/{id}')
-
 
 @app.route('/edit/<int:id>')
 def edit_post(id):
@@ -144,9 +134,31 @@ def edit_post(id):
     return render_template('edit_post.html', post=post)
 
 
-@app.route('posts/<int:id>/edit', methods=['POST'])
+@app.route('/posts/<int:id>/edit', methods=['POST'])
 def post_edition(id):
     title = request.form['title']
     content = request.form['content']
 
+    target_post = Post.query.filter(Post.id == id).one()
+
+    id = target_post.user_id
+
+    post = Post(title=title, content=content, user_id=id)
+
+    db.session.delete(target_post)
+    db.session.commit()
+    db.session.add(post)
+    db.session.commit()
+
+    return redirect(f'/user/{id}')
+
+
+@app.route('/delete/<int:id>')
+def delete_post(id):
+    post = Post.query.get_or_404(id)
     
+    
+    db.session.delete(post)
+    db.session.commit()
+
+    return redirect(f'/user/{post.user_id}')
