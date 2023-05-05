@@ -1,7 +1,8 @@
-{% extends 'base.html' %} {% block content %}
-<main class="edited-post">
+{% extends 'base.html' %} {% block title %}{{post.title}}{% endblock %} {% block
+content %}
+<main class="main-container">
   <h1>Edit Post</h1>
-  <form action="/posts/{{post.id}}/edit" method="POST">
+  <form class="form" action="/posts/{{post.id}}/edit" method="POST">
     <label for="title"
       >Title:
       <input
@@ -15,12 +16,12 @@
     </label>
     <label for="content"
       >Post Content:
-      <textarea name="content" id="content" cols="30" rows="10">
+      <textarea name="content" id="content" cols="50" rows="10">
 {{post.content}}</textarea
       >
     </label>
     <a href="">Cancel</a>
-    <button type="Submit">Edit</button>
+    <button class="submit-btn" type="Submit">Edit</button>
   </form>
 </main>
 {% endblock %}

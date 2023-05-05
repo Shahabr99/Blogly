@@ -1,7 +1,10 @@
-{% extends 'base.html' %}{% block tag %} ]
-<ul>
-  {% for tag in tags %}
-  <li>{{tag.name}}</li>
-  {% endfor %}
-</ul>
+{% extends 'base.html' %} {% block title %}{% endblock %} {% block content %} ]
+<main class="main-container">
+  <li>Tag Names</li>
+  <ul>
+    {% for tag in tags %}
+    <li>#{{tag.name}}</li>
+    {% endfor %}
+  </ul>
+</main>
 {%endblock %}
