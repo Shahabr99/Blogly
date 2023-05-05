@@ -4,13 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>List of users</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="/static/app.css" />
   </head>
   <body>
-    <div class="user-header">
-      {% block form %}{% endblock %} {% block users %}{% endblock %} {% block
-      button %}{% endblock %}
-    </div>
+    {% block content %}{% endblock %}
   </body>
 </html>

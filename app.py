@@ -161,4 +161,20 @@ def delete_post(id):
     db.session.delete(post)
     db.session.commit()
 
-    return redirect(f'/user/{post.user_id}')K
+    return redirect(f'/user/{post.user_id}')
+
+
+@app.route('/tags')
+def show_tags():
+    """Show all the info about tags"""
+
+    tags = Tag.query.all()
+    return render_template('tags.html', tags=tags)
+
+
+@app.route('/tags/new')
+def new_tag():
+    """Show form of creating a new tag"""
+
+    posts= Post.query.all()
+    return render_template('tagform.html', posts=posts)
