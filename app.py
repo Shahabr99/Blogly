@@ -2,7 +2,7 @@
 
 from flask import Flask, render_template, redirect, session, request
 from models import db, connect_db, User
-from models import Post
+from models import Post, Tag, PostTag
 
 app = Flask(__name__)
 

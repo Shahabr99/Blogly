@@ -4,17 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-class Post(db.Model):
-
-    __tablename__ = 'posts'
-
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    title = db.Column(db.Text, nullable=False, unique=True)
-    content = db.Column(db.String(500), nullable=False, unique=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
-    rel = db.relationship('User', backref="posts")
-
 
 class User(db.Model):
 
@@ -34,14 +23,6 @@ class User(db.Model):
 
 
 
-class PostTag(db.Model):
-
-    __tablename__ = "posts_tags"
-
-    post_id=db.Column(db.Integer,db.ForeignKey('posts.id') ,primary_key=True)
-    tag_id=db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
-
-
 class Tag(db.Model):
 
     __tablename__= "tags"
@@ -50,6 +31,30 @@ class Tag(db.Model):
     name=db.Column(db.Text, nullable=False, unique=True)
 
     posts=db.relationship('Post', secondary="posts_tags", backref="tags")
+
+
+class Post(db.Model):
+
+    __tablename__ = 'posts'
+
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.Text, nullable=False, unique=True)
+    content = db.Column(db.String(500), nullable=False, unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    rel = db.relationship('User', backref="posts")
+
+
+
+class PostTag(db.Model):
+
+    __tablename__ = "posts_tags"
+
+    post_id=db.Column(db.Integer,db.ForeignKey('posts.id') ,primary_key=True)
+    tag_id=db.Column(db.Integer, db.ForeignKey('tags.id'), primary_key=True)
+
+
+
 
 
 
