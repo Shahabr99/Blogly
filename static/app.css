@@ -4,6 +4,19 @@
   box-sizing: border-box;
 }
 
+.main-container {
+  margin: 100px auto;
+  width: 1000px;
+  height: 800px;
+  padding: 50px;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+#unordered {
+  margin-bottom: 50px;
+}
+
 .user-header {
   width: 400px;
   margin: 100px auto;
@@ -37,6 +50,7 @@
 
 .user-form {
   height: 200px;
+  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -102,6 +116,10 @@ li {
 
 .submit-btn {
   width: 100px;
+  background-color: rgb(69, 69, 164);
+  border: none;
+  padding: 5px 10px;
+  color: #eee;
 }
 
 .btn-container {

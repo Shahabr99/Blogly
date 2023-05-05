@@ -1,9 +1,14 @@
-{% extends 'base.html' %} {% block users %}
-<h1>List of users:</h1>
-{% for user in users %}
-<li>
-  <a href="/user/{{user.id}}">{{user.first_name}} {{user.last_name}}</a>
-</li>
-{% endfor %} {% endblock %} {% block button %}
-<a class="add-user-btn" href="/user/new">Add user</a>
+{% extends 'base.html' %} {% block title %}Users{% endblock %} {% block content
+%}
+<main class="main-container">
+  <h1>List of users:</h1>
+  <ul id="unordered">
+    {% for user in users %}
+    <li>
+      <a href="/user/{{user.id}}">{{user.first_name}} {{user.last_name}}</a>
+    </li>
+    {% endfor %}
+  </ul>
+  <a class="add-user-btn" href="/user/new">Add user</a>
+</main>
 {% endblock %}

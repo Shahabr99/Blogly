@@ -42,9 +42,8 @@ def add_user():
     db.session.add(new_user)
     db.session.commit()
 
-    users = User.query.all()
+    return redirect('/users')
 
-    return render_template('users.html', users=users)
 
 @app.route('/user/<int:id>')
 def show_user(id):

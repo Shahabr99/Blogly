@@ -1,23 +1,27 @@
-{% extends "base.html" %}{% block form %}
-<form class="user-form" method="POST">
-  <label for="first-name"
-    >First name: <input id="first-name' type="text" name="first_name"
-    placeholder="name..." required />
-  </label>
-  <label for="last-name"
-    >Last name:
-    <input
-      id="last-name"
-      type="text"
-      name="last_name"
-      placeholder="last name..."
-      required
-    />
-  </label>
-  <label for="image-url"
-    >Profile picture URL:
-    <input id="image-url" type="text" name="image_url" maxlength="100" />
-  </label>
-  <button type="submit">Submit</button>
-</form>
+{% extends "base.html" %} {% block title %}User Form{% endblock %} {% block
+content %}
+<main class="main-container">
+  <h1>Create a user:</h1>
+  <form class="user-form" method="POST">
+    <label for="first-name"
+      >First name: <input id="first-name' type="text" name="first_name"
+      placeholder="name..." required />
+    </label>
+    <label for="last-name"
+      >Last name:
+      <input
+        id="last-name"
+        type="text"
+        name="last_name"
+        placeholder="last name..."
+        required
+      />
+    </label>
+    <label for="image-url"
+      >Profile picture URL:
+      <input id="image-url" type="text" name="image_url" maxlength="100" />
+    </label>
+    <button class="submit-btn" type="submit">Submit</button>
+  </form>
+</main>
 {% endblock %}
