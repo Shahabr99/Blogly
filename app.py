@@ -74,7 +74,7 @@ def change_user(id):
     target_user.last_name = lastname
     target_user.image_url = image
 
-   
+
     db.session.add(target_user)
     db.session.commit()
     
@@ -161,4 +161,4 @@ def delete_post(id):
     db.session.delete(post)
     db.session.commit()
 
-    return redirect(f'/user/{post.user_id}')
+    return redirect(f'/user/{post.user_id}')K
